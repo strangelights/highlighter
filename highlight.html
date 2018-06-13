@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2018-06-05/ef6ca356da6545e1e74f30f4013edd34.ico">
+    <title>Text Hilighting for Fun and Profit!</title>
+    <style>
+		.body {
+		    margin: auto;
+		    width: 66.6%;
+		    padding: 33px;
+		    font-family: Helvetica, sans-serif;
+		    font-weight: lighter;
+		    font-size: 17px;
+		}
+		
+		.heading{
+			text-align: center;
+		}
+
+		.main-heading{
+			font-weight: lighter;
+			font-size: 2.5em;
+			letter-spacing: 7px;
+		}
+
+		.highlight{
+			background-color: #ACCEF7;
+		}
+
+		.paragraph{
+			text-align: left;	
+		}
+
+		.samson{
+			font-style: ;
+		}
+	</style>
+	
+  </head>
+  <body>
+	<div class="body">
+
+		<div class="heading">
+			<h1 class="main-heading">Let's <span class="highlight">Highlight</span> Some Text</h1>	
+		</div>
+		<div class="paragraph" id="paragraph">
+			<p class="main-paragraph" > Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam donec adipiscing tristique risus nec feugiat. Ut aliquam purus sit amet luctus. Augue ut lectus arcu bibendum at varius vel. Ut enim blandit volutpat maecenas. Ornare lectus sit amet est placerat. Viverra adipiscing at in tellus integer. Tortor id aliquet lectus proin nibh nisl. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Diam vel quam elementum pulvinar etiam non quam lacus. Dictum varius duis at consectetur lorem donec massa sapien. Nulla pharetra diam sit amet nisl suscipit adipiscing. Sed felis eget velit aliquet sagittis id consectetur purus ut.</p>
+
+			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. <span class="samson">From strenth sweetness. From darkness light. The bees made honey in the lion's skull.</span> Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>
+
+			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>	
+
+		</div>
+	</div>
+
+	<div id="testDiv"></div>
+
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>		
+	
+	<script>
+
+	isTextSelected: function () {   
+        var myText = cqsearch.getSelectedText();
+        var paragraph = document.getElementById("paragraph");
+        var paragraphDoc = paragraph.contentDocument || document;
+        var curHighlightedDiv = paragraphDoc.getElementById("testDiv");
+        curHighlightedDiv.innerHTML = "Current text selection:" + myText;
+    };
+
+
+		/*
+		$(document).ready(function () {
+  			$( "paragraph" ).select(function() {
+  				alert( "Something was selected!" );
+			});
+		});
+		?*
+		
+	</script>
+  	
+	
+  
+  </body>
+</html>
