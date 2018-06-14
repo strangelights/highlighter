@@ -54,30 +54,44 @@
 		</div>
 	</div>
 
-	<div id="testDiv"></div>
-
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>		
-	
-	<script>
 
-	isTextSelected: function () {   
-        var myText = cqsearch.getSelectedText();
-        var paragraph = document.getElementById("paragraph");
-        var paragraphDoc = paragraph.contentDocument || document;
-        var curHighlightedDiv = paragraphDoc.getElementById("testDiv");
-        curHighlightedDiv.innerHTML = "Current text selection:" + myText;
-    };
+	<script> 
 
+		//-------- This script listens for text highlight event and triggers action (alert) on mouseup
 
-		/*
-		$(document).ready(function () {
-  			$( "paragraph" ).select(function() {
-  				alert( "Something was selected!" );
-			});
+				 if(!window.pageObject){
+		  var pageObject = {};
+		}
+
+		pageObject.Selector = {};
+		pageObject.Selector.getSelected = function(){
+		  var txt = '';
+		  if(window.getSelection){          // browser specific conditionals:
+		    txt = window.getSelection();    
+		  }else if(document.getSelection){
+		    txt = document.getSelection();  
+		  }else if(document.selection){
+		    txt = document.selection.createRange().text;
+		  }
+		  return txt;
+		}
+
+		pageObject.Selector.mouseup = function(){
+		  var selectedText = pageObject.Selector.getSelected();
+		  if(selectedText!=''){                     // prevents the script from trigger when mouse is clicked but with no text selected
+		    alert("You selected:\n"+selectedText);  // otherwise displays selected text as browser alert
+
+		  }
+		}
+
+		$(document).ready(function(){     // The jquery mouseup event occurs when the left mouse button is released over the selected element.
+		  $(document).bind("mouseup", pageObject.Selector.mouseup);
 		});
-		?*
-		
+
+		// script walkthrough courtesy of http://mark.koli.ch/use-javascript-and-jquery-to-get-user-selected-text 
+
 	</script>
   	
 	
