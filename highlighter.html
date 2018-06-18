@@ -32,9 +32,13 @@
 			text-align: left;	
 		}
 
-		.samson{
-			font-style: ;
+		.result{
+			border: 3px solid black;
+			padding: 2px 4px;
+			display: none;
 		}
+
+
 	</style>
 	
   </head>
@@ -47,11 +51,11 @@
 		<div class="paragraph" id="paragraph">
 			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam donec adipiscing tristique risus nec feugiat. Ut aliquam purus sit amet luctus. Augue ut lectus arcu bibendum at varius vel. Ut enim blandit volutpat maecenas. Ornare lectus sit amet est placerat. Viverra adipiscing at in tellus integer. Tortor id aliquet lectus proin nibh nisl. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Diam vel quam elementum pulvinar etiam non quam lacus. Dictum varius duis at consectetur lorem donec massa sapien. Nulla pharetra diam sit amet nisl suscipit adipiscing. Sed felis eget velit aliquet sagittis id consectetur purus ut.</p>
 
-			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. <span class="samson">From strenth sweetness. From darkness light. The bees made honey in the lion's skull.</span> Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>
-
 			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>	
 
-			<p id="result">test</p>
+			<button onclick="showResult()">Click to show panel</button>  <!-- THIS BUTTON WILL NEED TO GO AWAY! -->
+			
+			<div class="result" id="result">test</div>
 
 		</div>
 	</div>
@@ -61,7 +65,8 @@
 
 	<script> 
 
-		//-------- This script listens for text highlight event and triggers action (alert) on mouseup
+	
+		//-------- This script listens for text highlight event and triggers action on mouseup
 
 				 if(!window.pageObject){
 		  var pageObject = {};
@@ -83,29 +88,29 @@
 		pageObject.Selector.mouseup = function(){
 		  var selectedText = pageObject.Selector.getSelected();
 		  if(selectedText!=''){                     // prevents the script from trigger when mouse is clicked but with no text selected
-		    // alert("You selected:\n"+selectedText);  // otherwise displays selected text as browser alert
-		    document.getElementById('result')= document.body.replace('test', selectedText);   <========= Try to understand this bs
+			
+			// if text is selected, display elsewhere on page:
+		    document.getElementById("result").innerText = "Here's what you highlighted: " + selectedText;
 
+		    // alert("You selected:\n"+selectedText);  // <==== If browser alerts are your thing.
+		    
 		  }
 		}
 
 		$(document).ready(function(){     // The jquery mouseup event occurs when the left mouse button is released over the selected element.
 		  $(document).bind("mouseup", pageObject.Selector.mouseup);
 		});
-																											o ========= Probably remove this bs
-																											||
-																											\/
 
-		/* function displayResult(){
-			var document.getElementById('result') = document.getElementById('result').replace('test', 'fart');  
-			};
-
-	    */
+		 // mouseup listner idea and walkthrough courtesy of http://mark.koli.ch/use-javascript-and-jquery-to-get-user-selected-text 
 
 
-		
+		 // This function only displays "result" block if it's text content is not an empty string -- probably wanbt to move it within the mouseup funciton to remove button 
 
-		// script walkthrough courtesy of http://mark.koli.ch/use-javascript-and-jquery-to-get-user-selected-text 
+		 function showResult(){
+		 	if (document.getElementById("result").innerText != ""){
+		 		result.style.display = "block";
+		 	}
+		 }
 
 	</script>
   	
