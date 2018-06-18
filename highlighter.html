@@ -2,8 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2018-06-05/ef6ca356da6545e1e74f30f4013edd34.ico">
     <title>Text Highlighting for Fun and Profit!</title>
+    <link rel="icon" type="image/png" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2018-06-05/ef6ca356da6545e1e74f30f4013edd34.ico">
+    <link rel="stylesheet"
+  	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
     <style>
 		.body {
 		    margin: auto;
@@ -21,11 +24,22 @@
 		.main-heading{
 			font-weight: lighter;
 			font-size: 2.5em;
-			letter-spacing: 7px;
+			letter-spacing: 6px;
+			animation-duration: 1s;	
 		}
 
 		.highlight{
-			background-color: #ACCEF7;
+		
+			animation-name: highlightAnim;
+			animation-delay: .6s;
+			animation-duration: 2.5s;
+			animation-fill-mode: forwards;
+		}
+
+		@keyframes highlightAnim {
+	    	from {background-color: #FFFFFF;}
+	    	to {background-color: #ACCEF7;} 
+	    	
 		}
 
 		.paragraph{
@@ -33,30 +47,50 @@
 		}
 
 		.result{
-			border: 3px solid black;
-			padding: 2px 4px;
-			display: none;
+			display: hidden;
 		}
 
 
+		.result-updated{
+			border: 3px solid black;
+			border-radius: 25px;
+			padding: 10px;
+			background: rgba(178, 215, 253, .25);
+			
+		}
+
+		.results-updated:hover{
+			background: rgba(178, 215, 253, 1.0);
+			
+		}
+
+		.newH3{
+			font-weight: inherit;
+			text-align: center;
+
+
+		
+		}
+
 	</style>
-	
   </head>
   <body>
 	<div class="body">
 
 		<div class="heading">
-			<h1 class="main-heading">Let's <span class="highlight">Highlight</span> Some Text</h1>	
+			<h1 class="main-heading animated"><span class="highlight">Highlight</span> Some Text Below</h1>
 		</div>
+
+
+
 		<div class="paragraph" id="paragraph">
 			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam donec adipiscing tristique risus nec feugiat. Ut aliquam purus sit amet luctus. Augue ut lectus arcu bibendum at varius vel. Ut enim blandit volutpat maecenas. Ornare lectus sit amet est placerat. Viverra adipiscing at in tellus integer. Tortor id aliquet lectus proin nibh nisl. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Diam vel quam elementum pulvinar etiam non quam lacus. Dictum varius duis at consectetur lorem donec massa sapien. Nulla pharetra diam sit amet nisl suscipit adipiscing. Sed felis eget velit aliquet sagittis id consectetur purus ut.</p>
 
 			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>	
 
-			<button onclick="showResult()">Click to show panel</button>  <!-- THIS BUTTON WILL NEED TO GO AWAY! -->
-			
-			<div class="result" id="result">test</div>
+			<div class="newH3" id="newH3"></div>
 
+			<p class="result" id="result"></p>
 		</div>
 	</div>
 
@@ -65,7 +99,6 @@
 
 	<script> 
 
-	
 		//-------- This script listens for text highlight event and triggers action on mouseup
 
 				 if(!window.pageObject){
@@ -90,9 +123,18 @@
 		  if(selectedText!=''){                     // prevents the script from trigger when mouse is clicked but with no text selected
 			
 			// if text is selected, display elsewhere on page:
-		    document.getElementById("result").innerText = "Here's what you highlighted: " + selectedText;
+		    
+			var showResult = document.getElementById("result")
+		    showResult.innerText = selectedText;
+		    showResult.className = "result-updated"
 
-		    // alert("You selected:\n"+selectedText);  // <==== If browser alerts are your thing.
+		    var newEl = document.createElement("h3");                  // create a new <h3>
+		    var newText = document.createTextNode("You slected:");    // create text for <h3>
+		    newEl.appendChild(newText);								 // append the text to the <h3>
+		    document.getElementById("newH3").appendChild(newEl);    // append the <h3> to the empty <div> labeled "newH3"
+
+		    //alert("You selected:\n"+selectedText);  // <==== If browser alerts are your thing.
+
 		    
 		  }
 		}
@@ -106,11 +148,8 @@
 
 		 // This function only displays "result" block if it's text content is not an empty string -- probably wanbt to move it within the mouseup funciton to remove button 
 
-		 function showResult(){
-		 	if (document.getElementById("result").innerText != ""){
-		 		result.style.display = "block";
-		 	}
-		 }
+		 
+		 
 
 	</script>
   	
