@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title>Text Highlighting for Fun and Profit!</title>
     <link rel="icon" type="image/png" href="https://favicon-generator.org/favicon-generator/htdocs/favicons/2018-06-05/ef6ca356da6545e1e74f30f4013edd34.ico">
-    <link rel="stylesheet"
-  	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
 		.body {
 		    margin: auto;
@@ -15,6 +14,10 @@
 		    font-family: Helvetica, sans-serif;
 		    font-weight: lighter;
 		    font-size: 17px;
+		    background-color: #FFFFFF;
+		    height: 87vh;
+		    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+		 
 		}
 		
 		.heading{
@@ -24,80 +27,94 @@
 		.main-heading{
 			font-weight: lighter;
 			font-size: 2.5em;
-			letter-spacing: 6px;
+			letter-spacing: 5px;
 			animation-duration: 1s;	
 		}
 
 		.highlight{
-		
 			animation-name: highlightAnim;
-			animation-delay: .6s;
-			animation-duration: 2.5s;
+			animation-delay: .3s;
+			animation-duration: 2.0s;
 			animation-fill-mode: forwards;
+			border: auto;
+			border-radius: 3px;
 		}
 
 		@keyframes highlightAnim {
 	    	from {background-color: #FFFFFF;}
-	    	to {background-color: #ACCEF7;} 
-	    	
+	    	to {background-color: #ACCEF7;} 	
 		}
 
 		.paragraph{
 			text-align: left;	
 		}
 
-		.result{
+		#result{
 			display: hidden;
 		}
 
-
 		.result-updated{
-			border: 3px solid black;
-			border-radius: 25px;
+			border: 0px solid black;
+			border-style: inset;
+			border-radius: 10px;
 			padding: 10px;
-			background: rgba(178, 215, 253, .25);
-			
+			background: rgba(178, 215, 253, .75);
+			box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); 	
 		}
 
-		.results-updated:hover{
+		.result-updated:hover{
 			background: rgba(178, 215, 253, 1.0);
-			
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
 		}
 
-		.newH3{
-			font-weight: inherit;
+		.h3{
 			text-align: center;
+			font-weight: lighter;
+			font-family: Helvetica, sans-serif;
+			font-size: 1.5em;
+			letter-spacing: 2px;
 
-
-		
 		}
-
+		.footer {
+		   margin: auto;
+		   position: fixed;
+		   left: 0;
+		   bottom: 0;
+		   width: 100%;
+		   background-color: grey;
+		   color: white;
+		   text-align: center;
+		}
 	</style>
   </head>
-  <body>
+  <body style= "background-color: #dedede";>
 	<div class="body">
 
 		<div class="heading">
 			<h1 class="main-heading animated"><span class="highlight">Highlight</span> Some Text Below</h1>
 		</div>
 
-
-
-		<div class="paragraph" id="paragraph">
+		<div class="paragraph">
 			<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam donec adipiscing tristique risus nec feugiat. Ut aliquam purus sit amet luctus. Augue ut lectus arcu bibendum at varius vel. Ut enim blandit volutpat maecenas. Ornare lectus sit amet est placerat. Viverra adipiscing at in tellus integer. Tortor id aliquet lectus proin nibh nisl. Nulla at volutpat diam ut venenatis tellus in metus vulputate. Diam vel quam elementum pulvinar etiam non quam lacus. Dictum varius duis at consectetur lorem donec massa sapien. Nulla pharetra diam sit amet nisl suscipit adipiscing. Sed felis eget velit aliquet sagittis id consectetur purus ut.</p>
 
 			<p>Elementum eu facilisis sed odio morbi quis commodo. Aliquet enim tortor at auctor urna. Porttitor rhoncus dolor purus non. Sed nisi lacus sed viverra tellus. Turpis cursus in hac habitasse platea dictumst. Auctor augue mauris augue neque gravida in. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Leo duis ut diam quam. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus vel. Nam at lectus urna duis convallis. Dui vivamus arcu felis bibendum. Diam volutpat commodo sed egestas egestas fringilla phasellus. Et tortor consequat id porta nibh venenatis cras sed felis.</p>	
 
-			<div class="newH3" id="newH3"></div>
+	
 
-			<p class="result" id="result"></p>
+			<div class="" >
+				<div id="newH3"></div>
+				<p class="" id="result"></p>
+			</div>
 		</div>
 	</div>
 
-
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>		
-
+  		
 	<script> 
+		var newEl = document.createElement("h3");                 	  // create a new <h3>
+		    var newText = document.createTextNode("You selected:");   // create text for <h3>
+		    newEl.appendChild(newText);								// append the text to the <h3>
+		    newEl.className ="h3";				 
+		    
 
 		//-------- This script listens for text highlight event and triggers action on mouseup
 
@@ -125,35 +142,23 @@
 			// if text is selected, display elsewhere on page:
 		    
 			var showResult = document.getElementById("result")
-		    showResult.innerText = selectedText;
-		    showResult.className = "result-updated"
+		    showResult.innerText = selectedText;					// populates hidden <p> with highlighted text
+		    showResult.className = "result-updated"					// changes css class to non-hidden/stylized class
+			document.getElementById("newH3").appendChild(newEl);    // append the <h3> to the empty <div> labeled "newH3"  
 
-		    var newEl = document.createElement("h3");                  // create a new <h3>
-		    var newText = document.createTextNode("You slected:");    // create text for <h3>
-		    newEl.appendChild(newText);								 // append the text to the <h3>
-		    document.getElementById("newH3").appendChild(newEl);    // append the <h3> to the empty <div> labeled "newH3"
-
-		    //alert("You selected:\n"+selectedText);  // <==== If browser alerts are your thing.
-
-		    
 		  }
 		}
+		    
 
 		$(document).ready(function(){     // The jquery mouseup event occurs when the left mouse button is released over the selected element.
 		  $(document).bind("mouseup", pageObject.Selector.mouseup);
 		});
 
-		 // mouseup listner idea and walkthrough courtesy of http://mark.koli.ch/use-javascript-and-jquery-to-get-user-selected-text 
-
-
-		 // This function only displays "result" block if it's text content is not an empty string -- probably wanbt to move it within the mouseup funciton to remove button 
-
-		 
-		 
+		 // mouseup listner idea and walkthrough courtesy of http://mark.koli.ch/use-javascript-and-jquery-to-get-user-selected-text
 
 	</script>
-  	
-	
-  
+	<div class="footer">
+  		<p><a href="https://github.com/strangelights/highlighter"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitHub Logo" style="height:25px;"></p>
+	</div>
   </body>
 </html>
