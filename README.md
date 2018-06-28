@@ -1,4 +1,4 @@
-Hightlighter is a proof of concept utility for capturing, displaying, and transporting text strings as it appears on a webpage. 
+Hightlighter is a proof of concept utility for capturing, displaying, and transporting text as it appears on a webpage. 
 
 Usecase: Capture text as a string via cursor hilighting and send string to server via AJAX request.
 
