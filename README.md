@@ -1,10 +1,14 @@
-#Highlighter
-###Hightlighter is a proof of concept utility for capturing, displaying, and transporting text as it appears on a webpage. 
+# Highlighter
+
+Hightlighter is a proof of concept utility for capturing, displaying, and transporting text as it appears on a webpage. 
+
 
 Usecase: Capture text as a string via cursor hilighting and send string to server via AJAX request.
 
 
 Try it out: https://strangelights.github.io/highlighter/highlighter.html
+
+
 
 
 
